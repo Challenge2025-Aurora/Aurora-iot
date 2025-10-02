@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "author": "EasyMoto (ESP32)",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -200, "left": 420, "attrs": {} },
+
+    { "type": "wokwi-hc-sr04", "id": "ultra1", "top": -120, "left": 180, "attrs": { "distance": "300" } },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 160, "left": 220, "attrs": { "resistance": "10k" } },
+    { "type": "wokwi-buzzer", "id": "buzz1", "top": -10, "left": 220, "attrs": {} },
+
+    { "type": "wokwi-led", "id": "led_loc", "top": -250, "left": 610, "attrs": { "color": "yellow", "label": "locator" } },
+    { "type": "wokwi-led", "id": "led_occ", "top": -200, "left": 610, "attrs": { "color": "green", "label": "occupied" } },
+    { "type": "wokwi-led", "id": "led_mis", "top": -150, "left": 610, "attrs": { "color": "red", "label": "misplaced" } },
+    { "type": "wokwi-led", "id": "led_unk", "top": -100, "left": 610, "attrs": { "color": "blue", "label": "unknown" } },
+    { "type": "wokwi-led", "id": "led_low", "top": -50, "left": 610, "attrs": { "color": "orange", "label": "low_batt" } },
+
+    { "type": "wokwi-resistor", "id": "r_loc", "top": -240, "left": 690, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_occ", "top": -190, "left": 690, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_mis", "top": -140, "left": 690, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_unk", "top": -90, "left": 690, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_low", "top": -40, "left": 690, "rotate": 90, "attrs": { "value": "220" } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_inc", "top": -60, "left": 520, "attrs": { "label": "slot++" } },
+    { "type": "wokwi-pushbutton", "id": "btn_area", "top": -10, "left": 520, "attrs": { "label": "area A/B" } },
+    { "type": "wokwi-pushbutton", "id": "btn_clear", "top": 40, "left": 520, "attrs": { "label": "clear" } }
+  ],
+  "connections": [
+    [ "esp:3V3", "bb1:tp.5", "red", [] ],
+    [ "esp:GND.1", "bb1:tn.5", "black", [] ],
+
+
+    [ "ultra1:VCC", "bb1:tp.7", "red", [] ],
+    [ "ultra1:GND", "bb1:tn.7", "black", [] ],
+    [ "ultra1:TRIG", "esp:D19", "green", [] ],
+    [ "ultra1:ECHO", "esp:D18", "green", [] ],
+    [ "pot1:VCC", "bb1:tp.9", "red", [] ],
+    [ "pot1:GND", "bb1:tn.9", "black", [] ],
+    [ "pot1:SIG", "esp:D34", "green", [] ],
+
+    [ "buzz1:1", "esp:D23", "green", [] ],
+    [ "buzz1:2", "bb1:tn.4", "black", [] ],
+
+    [ "esp:D14", "bb1:15t.e", "green", [] ],
+    [ "btn_inc:1.l", "bb1:15t.e", "green", [] ],
+    [ "btn_inc:2.l", "bb1:tn.3", "black", [] ],
+
+    [ "esp:D27", "bb1:17t.e", "green", [] ],
+    [ "btn_area:1.l", "bb1:17t.e", "green", [] ],
+    [ "btn_area:2.l", "bb1:tn.3", "black", [] ],
+
+    [ "esp:D26", "bb1:19t.e", "green", [] ],
+    [ "btn_clear:1.l", "bb1:19t.e", "green", [] ],
+    [ "btn_clear:2.l", "bb1:tn.3", "black", [] ],
+    [ "esp:D21", "r_loc:1", "green", [] ],
+    [ "r_loc:2", "bb1:26t.c", "green", [] ],
+    [ "led_loc:A", "bb1:26t.a", "green", [] ],
+    [ "led_loc:K", "bb1:tn.10", "black", [] ],
+
+    [ "esp:D22", "r_occ:1", "green", [] ],
+    [ "r_occ:2", "bb1:28t.c", "green", [] ],
+    [ "led_occ:A", "bb1:28t.a", "green", [] ],
+    [ "led_occ:K", "bb1:tn.11", "black", [] ],
+
+    [ "esp:D5", "r_mis:1", "green", [] ],
+    [ "r_mis:2", "bb1:30t.c", "green", [] ],
+    [ "led_mis:A", "bb1:30t.a", "green", [] ],
+    [ "led_mis:K", "bb1:tn.12", "black", [] ],
+
+    [ "esp:D15", "r_unk:1", "green", [] ],
+    [ "r_unk:2", "bb1:32t.c", "green", [] ],
+    [ "led_unk:A", "bb1:32t.a", "green", [] ],
+    [ "led_unk:K", "bb1:tn.13", "black", [] ],
+
+    [ "esp:D2", "r_low:1", "green", [] ],
+    [ "r_low:2", "bb1:34t.c", "green", [] ],
+    [ "led_low:A", "bb1:34t.a", "green", [] ],
+    [ "led_low:K", "bb1:tn.14", "black", [] ]
+  ],
+  "dependencies": {}
+}
