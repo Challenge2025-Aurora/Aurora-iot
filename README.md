@@ -19,8 +19,6 @@ Sistema simples de telemetria para **monitorar vagas de motos**. Detecta presen�
 * [Dashboards no ThingSpeak](#dashboards-no-thingspeak)
 * [Cenários de teste](#cenários-de-teste)
 * [Checklist Sprint 3 (IoT)](#checklist-sprint-3-iot)
-* [Solução de problemas](#solução-de-problemas)
-* [Licença](#licença)
 
 ---
 
@@ -255,18 +253,3 @@ Use o **Monitor Serial** (115200 bps) para consultar/ajustar:
 * [x] **Persistência**: armazenamento no **ThingSpeak** (histórico por campo).
 * [x] **Cenários realistas**: fora do lugar, ocupação desconhecida, bateria baixa.
 
----
-
-## Solução de problemas
-
-* **Sem dados no ThingSpeak**: valide **Channel ID** e **Write API Key**; respeite o **intervalo mínimo** (>= 15 s).
-* **Wi‑Fi não conecta**: confira SSID/senha e proximidade do roteador (no Wokwi, use `Wokwi-GUEST`).
-* **Medição instável do ultrassom**: adicione média móvel/exclusão de outliers no firmware; confira fiação (GND comum).
-* **Botões “invertidos”**: se usar `INPUT_PULLUP`, o estado pressionado é **LOW**.
-* **LEDs fracos**: use resistores adequados (220–330Ω) e confira o pino configurado.
-
----
-
-## Licença
-
-Este projeto é disponibilizado sob a **MIT License**. Veja o arquivo `LICENSE` para detalhes.
